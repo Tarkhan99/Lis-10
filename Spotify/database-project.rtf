@@ -1,0 +1,344 @@
+{\rtf1\ansi\deff0\nouicompat{\fonttbl{\f0\fnil\fcharset0 Courier New;}}
+{\*\generator Riched20 10.0.17134}\viewkind4\uc1 
+\pard\f0\fs22\lang1033 -- phpMyAdmin SQL Dump\par
+-- version 4.7.7\par
+-- https://www.phpmyadmin.net/\par
+--\par
+-- Host: 127.0.0.1\par
+-- Generation Time: May 30, 2018 at 01:34 AM\par
+-- Server version: 10.1.30-MariaDB\par
+-- PHP Version: 7.2.2\par
+\par
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";\par
+SET AUTOCOMMIT = 0;\par
+START TRANSACTION;\par
+SET time_zone = "+00:00";\par
+\par
+\par
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;\par
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;\par
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;\par
+/*!40101 SET NAMES utf8mb4 */;\par
+\par
+--\par
+-- Database: `spotify`\par
+--\par
+\par
+-- --------------------------------------------------------\par
+\par
+--\par
+-- Table structure for table `albums`\par
+--\par
+\par
+CREATE TABLE `albums` (\par
+  `id` int(11) NOT NULL,\par
+  `title` varchar(250) NOT NULL,\par
+  `artist` int(11) NOT NULL,\par
+  `genre` int(11) NOT NULL,\par
+  `artworkPath` varchar(500) NOT NULL\par
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;\par
+\par
+--\par
+-- Dumping data for table `albums`\par
+--\par
+\par
+INSERT INTO `albums` (`id`, `title`, `artist`, `genre`, `artworkPath`) VALUES\par
+(1, 'Bacon and Eggs', 2, 4, 'assets/images/artwork/clearday.jpg'),\par
+(2, 'Pizza head', 5, 10, 'assets/images/artwork/energy.jpg'),\par
+(3, 'Summer hits', 3, 1, 'assets/images/artwork/goinghigher.jpg'),\par
+(4, 'The movie soundtrack', 2, 9, 'assets/images/artwork/funkyelement.jpg'),\par
+(5, 'Best of the Worst', 1, 3, 'assets/images/artwork/popdance.jpg'),\par
+(6, 'Hello World', 3, 6, 'assets/images/artwork/ukulele.jpg'),\par
+(7, 'Best beats', 4, 7, 'assets/images/artwork/sweet.jpg');\par
+\par
+-- --------------------------------------------------------\par
+\par
+--\par
+-- Table structure for table `artists`\par
+--\par
+\par
+CREATE TABLE `artists` (\par
+  `id` int(11) NOT NULL,\par
+  `name` varchar(50) NOT NULL\par
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;\par
+\par
+--\par
+-- Dumping data for table `artists`\par
+--\par
+\par
+INSERT INTO `artists` (`id`, `name`) VALUES\par
+(1, 'Mickey Mouse'),\par
+(2, 'Goofy'),\par
+(3, 'Bart Simpson'),\par
+(4, 'Homer'),\par
+(5, 'Bruce Lee');\par
+\par
+-- --------------------------------------------------------\par
+\par
+--\par
+-- Table structure for table `genres`\par
+--\par
+\par
+CREATE TABLE `genres` (\par
+  `id` int(11) NOT NULL,\par
+  `name` varchar(50) NOT NULL\par
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;\par
+\par
+--\par
+-- Dumping data for table `genres`\par
+--\par
+\par
+INSERT INTO `genres` (`id`, `name`) VALUES\par
+(1, 'Rock'),\par
+(2, 'Pop'),\par
+(3, 'Hip-hop'),\par
+(4, 'Classical'),\par
+(5, 'Techno'),\par
+(6, 'Jazz'),\par
+(7, 'Folk'),\par
+(8, 'Country'),\par
+(9, 'Disco'),\par
+(10, 'Rap');\par
+\par
+-- --------------------------------------------------------\par
+\par
+--\par
+-- Table structure for table `playlists`\par
+--\par
+\par
+CREATE TABLE `playlists` (\par
+  `id` int(11) NOT NULL,\par
+  `name` varchar(50) NOT NULL,\par
+  `owner` varchar(50) NOT NULL,\par
+  `dateCreated` datetime NOT NULL\par
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;\par
+\par
+--\par
+-- Dumping data for table `playlists`\par
+--\par
+\par
+INSERT INTO `playlists` (`id`, `name`, `owner`, `dateCreated`) VALUES\par
+(1, 'playlist1', 'terxan99', '0000-00-00 00:00:00'),\par
+(2, 'playlist2', 'terxan99', '0000-00-00 00:00:00'),\par
+(3, 'playlist3', 'terxan99', '0000-00-00 00:00:00'),\par
+(4, 'maga', 'terxan99', '0000-00-00 00:00:00'),\par
+(5, 'rauf', 'rauf567', '0000-00-00 00:00:00'),\par
+(7, 'emin]', 'fexri1234', '0000-00-00 00:00:00'),\par
+(8, 'playlist', 'maga11', '0000-00-00 00:00:00');\par
+\par
+-- --------------------------------------------------------\par
+\par
+--\par
+-- Table structure for table `playlistsongs`\par
+--\par
+\par
+CREATE TABLE `playlistsongs` (\par
+  `id` int(11) NOT NULL,\par
+  `songId` int(11) NOT NULL,\par
+  `playlistId` int(11) NOT NULL,\par
+  `playlistOrder` int(11) NOT NULL\par
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;\par
+\par
+--\par
+-- Dumping data for table `playlistsongs`\par
+--\par
+\par
+INSERT INTO `playlistsongs` (`id`, `songId`, `playlistId`, `playlistOrder`) VALUES\par
+(2, 16, 1, 2),\par
+(4, 21, 2, 5),\par
+(5, 23, 1, 3),\par
+(6, 25, 2, 6),\par
+(7, 24, 3, 0),\par
+(8, 7, 3, 1),\par
+(9, 10, 2, 7),\par
+(10, 1, 1, 4),\par
+(11, 2, 1, 5),\par
+(12, 3, 2, 8),\par
+(13, 4, 3, 2),\par
+(14, 5, 2, 9),\par
+(15, 1, 5, 0),\par
+(16, 2, 5, 1),\par
+(19, 28, 7, 2),\par
+(21, 20, 8, 1),\par
+(22, 19, 8, 2);\par
+\par
+-- --------------------------------------------------------\par
+\par
+--\par
+-- Table structure for table `songs`\par
+--\par
+\par
+CREATE TABLE `songs` (\par
+  `id` int(11) NOT NULL,\par
+  `title` varchar(250) NOT NULL,\par
+  `artist` int(11) NOT NULL,\par
+  `album` int(11) NOT NULL,\par
+  `genre` int(11) NOT NULL,\par
+  `duration` varchar(20) NOT NULL,\par
+  `path` varchar(200) NOT NULL,\par
+  `albumOrder` int(11) NOT NULL,\par
+  `plays` int(11) NOT NULL\par
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;\par
+\par
+--\par
+-- Dumping data for table `songs`\par
+--\par
+\par
+INSERT INTO `songs` (`id`, `title`, `artist`, `album`, `genre`, `duration`, `path`, `albumOrder`, `plays`) VALUES\par
+(1, 'Acoustic Breeze', 1, 5, 8, '2:37', 'assets/music/bensound-acousticbreeze.mp3', 1, 12),\par
+(2, 'A new beginning', 1, 5, 1, '2:35', 'assets/music/bensound-anewbeginning.mp3', 2, 12),\par
+(3, 'Better Days', 1, 5, 2, '2:33', 'assets/music/bensound-betterdays.mp3', 3, 11),\par
+(4, 'Buddy', 1, 5, 3, '2:02', 'assets/music/bensound-buddy.mp3', 4, 4),\par
+(5, 'Clear Day', 1, 5, 4, '1:29', 'assets/music/bensound-clearday.mp3', 5, 16),\par
+(6, 'Going Higher', 2, 1, 1, '4:04', 'assets/music/bensound-goinghigher.mp3', 1, 24),\par
+(7, 'Funny Song', 2, 4, 2, '3:07', 'assets/music/bensound-funnysong.mp3', 2, 16),\par
+(8, 'Funky Element', 2, 1, 3, '3:08', 'assets/music/bensound-funkyelement.mp3', 2, 8),\par
+(9, 'Extreme Action', 2, 1, 4, '8:03', 'assets/music/bensound-extremeaction.mp3', 3, 15),\par
+(10, 'Epic', 2, 4, 5, '2:58', 'assets/music/bensound-epic.mp3', 3, 15),\par
+(11, 'Energy', 2, 1, 6, '2:59', 'assets/music/bensound-energy.mp3', 4, 9),\par
+(12, 'Dubstep', 2, 1, 7, '2:03', 'assets/music/bensound-dubstep.mp3', 5, 18),\par
+(13, 'Happiness', 3, 6, 8, '4:21', 'assets/music/bensound-happiness.mp3', 5, 13),\par
+(14, 'Happy Rock', 3, 6, 9, '1:45', 'assets/music/bensound-happyrock.mp3', 4, 13),\par
+(15, 'Jazzy Frenchy', 3, 6, 10, '1:44', 'assets/music/bensound-jazzyfrenchy.mp3', 3, 10),\par
+(16, 'Little Idea', 3, 6, 1, '2:49', 'assets/music/bensound-littleidea.mp3', 2, 21),\par
+(17, 'Memories', 3, 6, 2, '3:50', 'assets/music/bensound-memories.mp3', 1, 13),\par
+(18, 'Moose', 4, 7, 1, '2:43', 'assets/music/bensound-moose.mp3', 5, 12),\par
+(19, 'November', 4, 7, 2, '3:32', 'assets/music/bensound-november.mp3', 4, 6),\par
+(20, 'Of Elias Dream', 4, 7, 3, '4:58', 'assets/music/bensound-ofeliasdream.mp3', 3, 15),\par
+(21, 'Pop Dance', 4, 7, 2, '2:42', 'assets/music/bensound-popdance.mp3', 2, 16),\par
+(22, 'Retro Soul', 4, 7, 5, '3:36', 'assets/music/bensound-retrosoul.mp3', 1, 17),\par
+(23, 'Sad Day', 5, 2, 1, '2:28', 'assets/music/bensound-sadday.mp3', 1, 14),\par
+(24, 'Sci-fi', 5, 2, 2, '4:44', 'assets/music/bensound-scifi.mp3', 2, 7),\par
+(25, 'Slow Motion', 5, 2, 3, '3:26', 'assets/music/bensound-slowmotion.mp3', 3, 6),\par
+(26, 'Sunny', 5, 2, 4, '2:20', 'assets/music/bensound-sunny.mp3', 4, 8),\par
+(27, 'Sweet', 5, 2, 5, '5:07', 'assets/music/bensound-sweet.mp3', 5, 10),\par
+(28, 'Tenderness ', 3, 3, 7, '2:03', 'assets/music/bensound-tenderness.mp3', 4, 8),\par
+(29, 'The Lounge', 3, 3, 8, '4:16', 'assets/music/bensound-thelounge.mp3 ', 3, 61),\par
+(30, 'Ukulele', 3, 3, 9, '2:26', 'assets/music/bensound-ukulele.mp3 ', 2, 11),\par
+(31, 'Tomorrow', 3, 3, 1, '4:54', 'assets/music/bensound-tomorrow.mp3 ', 1, 12);\par
+\par
+-- --------------------------------------------------------\par
+\par
+--\par
+-- Table structure for table `users`\par
+--\par
+\par
+CREATE TABLE `users` (\par
+  `id` int(11) NOT NULL,\par
+  `userType` varchar(10) NOT NULL,\par
+  `username` varchar(25) NOT NULL,\par
+  `firstName` varchar(50) NOT NULL,\par
+  `lastName` varchar(50) NOT NULL,\par
+  `email` varchar(200) NOT NULL,\par
+  `password` varchar(32) NOT NULL,\par
+  `signUpDate` datetime NOT NULL,\par
+  `profilePic` varchar(500) NOT NULL\par
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;\par
+\par
+--\par
+-- Dumping data for table `users`\par
+--\par
+\par
+INSERT INTO `users` (`id`, `userType`, `username`, `firstName`, `lastName`, `email`, `password`, `signUpDate`, `profilePic`) VALUES\par
+(1, 'admin', 'terxan99', 'Terxan', 'Tahirov', 'Terxan@gmail.com', 'd66287ee1a2267d8c8ba02fde4d467cb', '2018-05-15 00:00:00', 'assetsimagesprofile-picspic.jpg'),\par
+(2, '', 'maga11', 'Mehemmed', 'Memmedli', 'muhammad@gmail.com', 'bb1b79f43b68981fabb102cc0f96caab', '2018-05-15 00:00:00', 'assetsimagesprofile-picspic.jpg');\par
+\par
+--\par
+-- Indexes for dumped tables\par
+--\par
+\par
+--\par
+-- Indexes for table `albums`\par
+--\par
+ALTER TABLE `albums`\par
+  ADD PRIMARY KEY (`id`);\par
+\par
+--\par
+-- Indexes for table `artists`\par
+--\par
+ALTER TABLE `artists`\par
+  ADD PRIMARY KEY (`id`);\par
+\par
+--\par
+-- Indexes for table `genres`\par
+--\par
+ALTER TABLE `genres`\par
+  ADD PRIMARY KEY (`id`);\par
+\par
+--\par
+-- Indexes for table `playlists`\par
+--\par
+ALTER TABLE `playlists`\par
+  ADD PRIMARY KEY (`id`);\par
+\par
+--\par
+-- Indexes for table `playlistsongs`\par
+--\par
+ALTER TABLE `playlistsongs`\par
+  ADD PRIMARY KEY (`id`);\par
+\par
+--\par
+-- Indexes for table `songs`\par
+--\par
+ALTER TABLE `songs`\par
+  ADD PRIMARY KEY (`id`);\par
+\par
+--\par
+-- Indexes for table `users`\par
+--\par
+ALTER TABLE `users`\par
+  ADD PRIMARY KEY (`id`);\par
+\par
+--\par
+-- AUTO_INCREMENT for dumped tables\par
+--\par
+\par
+--\par
+-- AUTO_INCREMENT for table `albums`\par
+--\par
+ALTER TABLE `albums`\par
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;\par
+\par
+--\par
+-- AUTO_INCREMENT for table `artists`\par
+--\par
+ALTER TABLE `artists`\par
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;\par
+\par
+--\par
+-- AUTO_INCREMENT for table `genres`\par
+--\par
+ALTER TABLE `genres`\par
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;\par
+\par
+--\par
+-- AUTO_INCREMENT for table `playlists`\par
+--\par
+ALTER TABLE `playlists`\par
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;\par
+\par
+--\par
+-- AUTO_INCREMENT for table `playlistsongs`\par
+--\par
+ALTER TABLE `playlistsongs`\par
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;\par
+\par
+--\par
+-- AUTO_INCREMENT for table `songs`\par
+--\par
+ALTER TABLE `songs`\par
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;\par
+\par
+--\par
+-- AUTO_INCREMENT for table `users`\par
+--\par
+ALTER TABLE `users`\par
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;\par
+COMMIT;\par
+\par
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;\par
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;\par
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;\par
+\par
+}
+ 
